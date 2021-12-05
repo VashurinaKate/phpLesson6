@@ -1,0 +1,279 @@
+.header {
+    background: url(../images/header-bg.jpg), $oppositeColor-transp;
+    background-size: 100%;
+    background-blend-mode: multiply;
+    // height: 500px;
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    &__left {
+        a {
+            width: 100px;
+            height: 100px;
+            display: block;
+            img {
+                width: 100%;
+                display: flex;
+            }
+        }
+    }
+    &__right {
+        display: flex;
+        gap: 1rem;
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        a {
+            color: white;
+            margin-left: 1rem;
+            svg {
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+    }
+}
+.services {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, $color-1 50%, $oppositeColor 50%);
+    background-clip: border-box;
+    background-origin: border-box;
+    clip-path: $chevronDown;
+    color: white;
+    height: 500px;
+    margin-top: $negativeMargin;
+    a {
+        color: white;
+        display: block;
+        width: 30px;
+        margin: 20px auto;
+    }
+    &__left,
+    &__right {
+        display: flex;
+        width: 50%;
+    }
+    &__item-down {
+        margin-top: 1rem;
+    }
+    &__icon {
+        @include mediaCircle;
+        margin: 0 auto;
+        @include centeredContent;
+        svg {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    &__text {
+        text-align: center;
+        margin-top: 1rem;
+    }
+}
+.packages {
+    color: $mainColor;
+    margin-top: $negativeMargin;
+    background: url(../img/smart-home-phone.jpg), rgb(210 255 247 / 76%);
+    background-blend-mode: color-dodge;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    padding-bottom: 70px;
+    padding-top: 120px;
+    &__right {
+        flex: 70%;
+        margin-left: 70px;
+    }
+    &__left {
+        flex: 30%;
+        img {
+            width: 100%;
+            display: flex;
+        }
+    }
+    article {
+        ul {flex: 50%;}
+    }
+    li::before {
+        content: url(../img/lock-solid.svg);
+        margin-right: 12px;
+        display: inline-block;
+        width: 12px;
+    }
+    &__list {
+        display: flex;
+    }
+}
+.featured {
+    position: relative;
+    display: flex;
+    height: max-content;
+    color: white;
+    margin-top: $negativeMargin;
+    &__overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        clip-path: polygon(0 0, 100% 8%, 100% 92%, 0 100%);
+        background: $color-1;
+    }
+    &__right {
+        background: url(../images/featured_cam.jpg), $overlay;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-blend-mode: multiply;
+        width: 35%;
+        clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%);
+    }
+    &__left {
+        width: 65%;
+        background: linear-gradient(45deg, $oppositeColor, $color-1);
+        clip-path: polygon(0 15%, 100% 5%, 100% 95%, 0 85%);
+        padding: 4rem 2rem;
+    }
+    &__media,
+    .heading-h1 {
+        width: 70%;
+        margin: 1rem 0 0 auto;
+        text-align: right;
+    }
+    &__media {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    &__img {
+        @include mediaCircle;
+        min-width: 100px;
+        @include centeredContent;
+        svg {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .btn {margin-left: auto;}
+}
+.equipment {
+    color: $mainColor;
+    margin-top: 3rem;
+    text-align: center;
+    &__img {
+        width: 70%;
+        margin: 0 auto;
+        img {width: 100%;}
+    }
+    
+    .btn {margin: 1.5rem auto;}
+}
+.customers {
+    position: relative;
+    color: white;
+    margin-top: 3rem;
+    &__overlay-top {
+        position: absolute;
+        background: $oppositeColor;
+        width: 100%;
+        height: 50%;
+        clip-path: polygon(0 11%, 100% 0, 100% 100%, 0% 100%);
+    }
+    &__top,
+    &__bottom {display: flex;}
+    &__top {
+        clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
+    }
+    &__bottom {
+        clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
+        margin-top: -61px;
+    }
+    &__top-left {
+        background: url(../images/customer.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 50%;
+    }
+    &__top-right {
+        background: $color-1;
+        width: 50%;
+        padding: 4rem 2rem;
+    }
+    &__bottom-right {
+        background: url(../images/customer_phone.jpg);
+        background-size: cover;
+        width: 50%;
+        position: relative;
+    }
+    &__bottom-left {
+        // background: linear-gradient(145deg, $oppositeColor, $color-1);
+        background: $oppositeColor;
+        width: 50%;
+        padding: 4rem 2rem;
+    }
+    &__overlay {
+        position: absolute;
+        background: rgba(white, 0.5);
+        width: 100%;
+        height: 100%;
+        clip-path: polygon(100% 85%, -50% 100%, 100% 100%);
+    }
+    &__media {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        &-item {
+            @include mediaCircle;
+            @include centeredContent;
+            background: $color-2;
+            svg {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+    &__numbers {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        &-item {
+            @include mediaCircle;
+            @include centeredContent;
+            position: relative;
+            background: $oppositeColor;
+            &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border: 6px solid #b170f1;
+                border-radius: 50%;
+                clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%, 0 50%);
+                transform: scale(0);
+                transition: $transition;
+            }
+            &:hover::before {
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+.app {
+    display: flex;
+    color: $mainColor;
+    margin-top: 3rem;
+    &__content {
+        width: 50%;
+    }
+    &__img {
+        width: 50%;
+        img {
+            width: 100%;
+            transform: scaleX(-1);
+        }
+    }
+}

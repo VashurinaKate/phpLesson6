@@ -1,0 +1,82 @@
+.footer {
+    background: $mainColor;
+    background-size: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: -1;
+    margin-top: 500px;
+    &__items {
+        display: flex;
+        gap: 1rem;
+    }
+    &__heading {
+        text-transform: uppercase;
+        color: white;
+        font-weight: 500;
+        font-size: .8rem;
+        margin: 2rem 0;
+        text-align: center;
+    }
+    p {
+        color: $color-2-transp;
+        font-size: .7rem;
+        max-width: 490px;
+    }
+    &__media {
+        display: flex;
+        gap: 14px;
+    }
+    &__img {
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        img {
+            width: 100%;
+            display: flex;
+        }
+    }
+    &__mediatext {
+        a {
+            text-transform: none;
+            font-weight: 600;
+            font-size: .7rem;
+            color: white;
+        }
+        .tag {
+            font-size: .6rem;
+            color: $oppositeColor;
+        }
+    }
+    &__contacts {
+        display: flex;
+        gap: .7rem;
+        margin-bottom: .5rem;
+        a {
+            text-transform: none;
+            color: $color-2-transp;
+            font-size: .7rem;
+        }
+        svg {
+            width: 20px;
+            height: 20px;
+            path {fill: $color-2-transp;}
+        }
+    }
+    &__social {
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+        margin-top: 1rem;
+        svg {
+            width: 20px;
+            height: 20px;
+            path {fill: white;}
+        }
+    }
+    &__rights {
+        width: 100%;
+        text-align: center;
+        margin: 2rem 0;
+        p {margin: 0 auto;}
+    }
+}

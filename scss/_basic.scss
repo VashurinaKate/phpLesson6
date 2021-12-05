@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+}
+.fade {
+    -webkit-animation-name: fade;
+            animation-name: fade;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1s;
+  }
+  @-webkit-keyframes fade {
+    from {
+      opacity: 0.1;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade {
+    from {
+      opacity: 0.1;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+.center {
+    padding-left: calc(50% - 570px);
+    padding-right: calc(50% - 570px);
+}
+.main {
+    min-height: 100vh;
+    background: white;
+    margin-bottom: 490px;
+}
+input,
+textarea {outline: none;}
+a {
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.heading-h1 {
+    @include headingH1;
+}
+.heading-h2 {
+    @include headingH2;
+}
+.heading-h3 {
+    @include headingH3;
+}
+.heading-h4 {
+    @include headingH4;
+}
+
+p,li {
+    @include text;
+}
+li {list-style-type: none;}

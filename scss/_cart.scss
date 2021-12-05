@@ -1,0 +1,109 @@
+.cart {
+    &__top {
+        display: grid;
+        // grid-template-columns: repeat(5, auto);
+        grid-template-columns: 40% 15% 15% 15% 15%;
+        background: $color-2-transp;
+        height: 80px;
+        align-items: center;
+        justify-items: center;
+    }
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $color-2-transp;
+        height: 80px;
+        padding: 0 1rem;
+        .btn {
+            height: 30px;
+            line-height: 30px;
+            font-size: .6rem;
+            box-shadow: 3px 3px 0 $oppositeColor-transp;
+            margin: 0;
+            outline: none;
+            &--clipped {background: white;}
+            &:hover {color: $oppositeColor;}
+        }
+    }
+    &__form {
+        display: flex;
+        gap: 1rem;
+        input {
+            height: 30px;
+            border: 1px solid $color-1-trasnp;
+            padding: 0 12px;
+        }
+    }
+    &__top {p {font-weight: 500;}}
+    &__items {border: 1px solid $color-2-transp;}
+    &__item {
+        display: grid;
+        // grid-template-columns: repeat(5, auto);
+        grid-template-columns: 40% 15% 15% 15% 15%;
+        align-items: center;
+        justify-items: center;
+        padding: 1rem 0;
+        border: 1px solid $color-2-transp;
+        svg {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            path {fill: $mainColor;}
+            &:hover {
+                path {fill: $oppositeColor;}
+            }
+        }
+    }
+    &__body {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    &__img {
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        img {
+            width: 100%;
+            display: flex;
+        }
+    }
+    &__name,
+    &__price,
+    &__total {
+        color: $mainColor;
+        text-transform: none;
+        font-size: .7rem;
+    }
+    &__quant {
+        input {
+            @include quantity;
+        }
+    }
+}
+.totals {
+    width: max-content;
+    margin-left: auto;
+    margin-top: 2rem;
+    &__heading,
+    &__str {
+        border-bottom: 1px solid $color-2-transp;
+        padding: 10px 0;
+    }
+    &__str {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        span {
+            color: $oppositeColor;
+            font-weight: 500;
+            font-size: .7rem;
+        }
+    }
+    .btn {
+        height: 30px;
+        font-size: .7rem;
+    }
+}
