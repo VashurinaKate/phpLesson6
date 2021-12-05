@@ -1,0 +1,35 @@
+.btn {
+    @include centeredContent;
+    width: max-content;
+    line-height: 2rem;
+    padding: 0 20px;
+    transition: $transition;
+    border: 1px solid $oppositeColor;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    &:hover {
+        transform: skewX(-12deg);
+        box-shadow: none;
+    }
+    &--solid {
+        color: white;
+        box-shadow: $btnShadow;
+        background: $oppositeColor;
+        &:hover {
+            background: transparent;
+        }
+    }
+    &--clipped {
+        color: $oppositeColor;
+        box-shadow: $btnShadowColored;
+        &:hover {
+            background: $oppositeColor;
+            color: white;
+        }
+    }
+    &--main {
+        border: 1px solid white;
+        color: white;
+        box-shadow: $btnShadow;
+    }
+}

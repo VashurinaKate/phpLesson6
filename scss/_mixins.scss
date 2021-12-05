@@ -1,0 +1,41 @@
+@mixin centeredContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin text {
+    font-size: 0.7rem;
+    line-height: 1.2rem;
+}
+@mixin mediaCircle {
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    border-radius: 50%;
+}
+@mixin headingH1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+@mixin headingH2 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+@mixin headingH3 {
+    font-size: 1.2rem;
+    color: $oppositeColor;
+    margin-bottom: 0.7rem;
+}
+@mixin headingH4 {
+    font-size: .7rem;
+    font-weight: 500;
+}
+@mixin quantity {
+    border: 1px solid $color-2-transp;
+    padding-left: 4px;
+    text-align: center;
+    line-height: 30px;
+    width: 50px;
+}

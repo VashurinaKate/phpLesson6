@@ -1,0 +1,291 @@
+.rating {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+    svg {
+        display: block;
+        width: 12px;
+        height: 12px;
+        path {fill: $color-2;}
+    }
+    svg[data-prefix="fas"] {
+        path {fill: rgb(247, 212, 19);}
+    }
+}
+.products {
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1rem;
+    position: relative;
+    &__grid {
+        display: grid;
+        grid-template-columns: $productWidth $productWidth $productWidth;
+        // grid-template-columns: repeat(auto-fill, minmax(180px, $productWidth));
+        height: max-content;
+        gap: 1rem;
+        position: relative;
+    }
+    &__showing {
+        grid-column: 1 / 4;
+        justify-self: start;
+    }
+    &__sort {
+        position: absolute;
+        grid-column: 3 / 4;
+        width: 100%;
+        z-index: 10;
+        details {
+            border: 1px solid $color-2-transp;
+            padding: 0 15px;
+            background: white;
+            summary {
+                cursor: pointer;
+                font-size: .7rem;
+                line-height: 30px;
+                &:focus {outline: none;}
+                svg {
+                    width: 10px;
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                }
+            }
+            li {
+                font-size: .6rem;
+                font-weight: 500;
+                line-height: 35px;
+                color: $color-1;
+                border-bottom: 1px solid $color-2-transp;
+                cursor: pointer;
+                transition: $transition;
+                &:hover {color: $oppositeColor;}
+            }
+        }
+        details[open] {
+            box-shadow: $shadow;
+            padding-bottom: .4rem;
+        }
+        ::-webkit-details-marker {display: none;}
+    }
+    &__item {
+        // max-width: $productWidth;
+        transition: $transition;
+        position: relative;
+        &:hover {
+            box-shadow: $shadow;
+            .btn {
+                opacity: 1;
+            }
+        }
+        .rating {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            z-index: 5;
+        }
+        .btn {
+            position: absolute;
+            opacity: 0;
+            transition: $transition;
+            line-height: 30px;
+            font-size: .6rem;
+            bottom: 14px;
+            left: 14px;
+            padding: 0 10px;
+            &:hover {
+                background: rgba(255, 255, 255, 0.87);
+                color: $oppositeColor;
+            }
+        }
+    }
+    &__img {
+        width: 100%;
+        height: $productWidth;
+        position: relative;
+        img {width: 100%;}
+    }
+    &__text {
+        padding: .4rem;
+        text-align: center;
+    }
+    &__name {
+        display: block;
+        font-size: 0.7rem;
+        margin-bottom: .4rem;
+        color: $mainColor;
+        // height: 50px;
+        // line-height: 25px;
+    }
+    &__price {
+        color: $oppositeColor;
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+}
+.sidebar {
+    position: sticky;
+    top: 1rem;
+    height: fit-content;
+    border: 1px solid $color-2-transp;
+    max-width: $productWidth;
+    min-width: 230px;
+    &__filter,
+    &__popular,
+    &__cart {
+        padding: 40px .5rem 50px;
+        background: white;
+        clip-path: polygon(0 20px, 100% 0%, 100% 100%, 0% 100%);
+        margin-top: -30px;
+    }
+    &__categories {
+        padding: 1rem .5rem 30px;
+        background: $color-2-transp;
+        a {
+            text-transform: none;
+            color: $mainColor;
+            transition: $transition;
+            font-size: .6rem;
+            &:hover {
+                color: $oppositeColor;
+            }
+        }
+    }
+    &__filter {
+        .btn {
+            line-height: 30px;
+            padding: 0 10px;
+            outline: none;
+            background: white;
+            &:hover {color: $oppositeColor;}
+        }
+    }
+    &__heading {
+        width: max-content;
+        margin: 0 auto;
+    }
+    .hr {
+        width: 60px;
+        height: 1px;
+        margin: 0 auto;
+        background: $color-2-transp;
+        position: relative;
+        margin-top: 10px;
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: 0.4s;
+            width: 20px;
+            height: inherit;
+            background: #4accab;
+        }
+    }
+    &__categories,
+    &__cart,
+    &__filter,
+    &__popular {
+        &:hover .hr::before {width: 100%;}
+    }
+    &__popular {background: $color-2-transp;}
+    &__cart {
+        &-item {
+            margin-top: 30px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid $color-2-transp;
+            position: relative;
+        }
+        &-img {
+            max-width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            img {
+                width: 100%;
+                display: flex;
+            }
+        }
+        &-remove {
+            position: absolute;
+            right: 0;
+            top: 52px;
+            svg {
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+                path {fill: $color-2;}
+                &:hover {
+                    path {fill: $oppositeColor;}
+                }
+            }
+        }
+        &-name {
+            margin: 12px 0;
+            a {
+                font-size: .6rem;
+                display: block;
+                color: $mainColor;
+                text-transform: none;
+                font-weight: 500;
+            }
+        }
+        &-quant {
+            color: $oppositeColor;
+            font-size: .6rem;
+            font-weight: 500;
+        }
+        &-subtotal {
+            font-size: .6rem;
+            font-weight: 600;
+            color: $mainColor;
+            margin: 14px 0;
+            span {
+                font-weight: 500;
+            }
+        }
+        &-bottom {
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            font-size: .6rem;
+            line-height: 30px;
+            padding: 0 10px;
+            margin: 0;
+            text-transform: none;
+            &--solid {
+                box-shadow: 3px 3px 0 $oppositeColor-transp;
+                &:hover {
+                    color: $oppositeColor;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+    &__media {
+        display: flex;
+        gap: 14px;
+        margin-top: 30px;
+        &-img {
+            width: 75px;
+            min-width: 75px;
+            height: 75px;
+            img {
+                width: 100%;
+                display: flex;
+                transition: $transition;
+                &:hover {
+                    filter: opacity(0.7);
+                }
+            }
+        }
+        &-name {
+            a {
+                font-size: .6rem;
+                display: block;
+                color: $oppositeColor;
+                text-transform: none;
+                font-weight: 500;
+            }
+        }
+    }
+}
