@@ -50,7 +50,7 @@ include_once("../models/db_goods.php");
                         <a href="product.php?id=<?=$good['id']?>">
                             <img src="images/products/<?= $good['img']?>" alt="product">
                         </a>
-                        <a href="#" class="btn btn--solid">В корзину</a>
+                        <a href="../models/db_cart.php?submit_good_to_cart&id=<?=$good['id']?>" class="btn btn--solid">В корзину</a>
                     </div>
                     <div class="products__text">
                         <a href="product.php?id=<?=$good['id']?>" class="products__name"><?= $good['title']?></a>
