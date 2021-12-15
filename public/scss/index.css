@@ -724,6 +724,7 @@ li {
   display: flex;
   gap: 14px;
   margin-top: 30px;
+  align-items: center;
 }
 .sidebar__media-img {
   width: 75px;

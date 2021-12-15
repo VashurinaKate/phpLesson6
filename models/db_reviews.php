@@ -28,7 +28,7 @@ function sendReview($connect, $goodId) {
     // $query = sprintf($sql, mysqli_real_escape_string($connect, $reviewerrating), mysqli_real_escape_string($connect, $reviewername), mysqli_real_escape_string($connect, $revieweremail), mysqli_real_escape_string($connect, $reviewtext));
 
     if ($res = mysqli_query($connect, $sql)) {
-        $updateReviewCount = "update goods set review_count=review_count+1 where id=$goodId";
+        $updateReviewCount = "UPDATE goods SET review_count=review_count+1, rating=(SELECT avg(user_rating) FROM reviews WHERE good_id=$goodId) WHERE id=$goodId";
         mysqli_query($connect, $updateReviewCount);
         header("Location: /public/product.php?id=$goodId");
     } else {

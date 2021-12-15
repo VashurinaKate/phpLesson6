@@ -67,6 +67,16 @@ if (isset($_GET['delete_product'])) {
 }
 
 function getBestsellers($connect) {
-    $connect = "select from goods ";
+    $sql = "SELECT * FROM goods ORDER BY rating DESC LIMIT 3";
+    $res = mysqli_query($connect, $sql);
+
+    if(!$res)
+        die(mysqli_error($connect));
+    
+    while($data = mysqli_fetch_assoc($res)) {
+        $bestsellers[] = $data;
+    }
+
+    return $bestsellers;
 }
 ?>

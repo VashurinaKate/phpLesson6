@@ -8,7 +8,7 @@
                 <h3 class="footer__heading">Последние новости</h3>
                 <div class="footer__media">
                     <div class="footer__img">
-                        <a href="#"><img src="../images/customer.jpg" alt="post-img"></a>
+                        <a href="#"><img src="../public/images/customer.jpg" alt="post-img"></a>
                     </div>
                     <div class="footer__mediatext">
                         <a href="#">Инновации в сфере безопасности</a>

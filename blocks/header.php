@@ -1,11 +1,11 @@
 <header class="header center">
     <div class="header__top">
         <div class="header__left">
-            <a href="#"><img src="../public/images/logo.png" alt="logo"></a>
+            <a href="index.php"><img src="../public/images/logo.png" alt="logo"></a>
         </div>
         <nav class="header__right">
             <ul>
-                <li><a href="#">Главная</a></li>
+                <li><a href="index.php">Главная</a></li>
                 <li><a href="#">Услуги</a></li>
                 <li><a href="catalog.php">Магазин</a></li>
                 <li><a href="#">Новости</a></li>
