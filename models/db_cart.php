@@ -3,18 +3,6 @@ include("../config.php");
 
 function getCart($connect) {
     $sql = "select * from cart";
-
-    // $q = "select * from goods where id in (";
-    //     foreach($_SESSION['cart'] as $id => $value) {
-    //         $q.=$id.",";
-    //     }
-    //     $q = substr($sql, 0, -1).") order by name asc";
-    //     $query = mysqli_query($q);
-
-    //     while($data = mysqli_fetch_assoc($query)) {
-    //         // $subtotal = 
-    //     }
-
     $res = mysqli_query($connect, $sql);
 
     if (!$res)
@@ -22,16 +10,21 @@ function getCart($connect) {
     
     while($data = mysqli_fetch_assoc($res)) {
         $cart[] = $data;
-        // var_dump($data['product_id']);
-        // print_r(substr($data['product_id']));
-        // $a = implode(",", str_split($data['product_id']));
-        $a = implode(",", $data['product_id']);
-
-        var_dump($data['product_id']);
-        // $sql_goods = "select * from goods where id in (";
-
+        
     }
     return $cart;
+}
+
+function getCartGood($connect, $productId) {
+    $sql = "select * from goods where id=$productId";
+    $res = mysqli_query($connect, $sql);
+    if (!$res)
+        die(mysqli_error($connect));
+        
+    while($data = mysqli_fetch_assoc($res)) {
+        $cartGood = $data;
+    }
+    return $cartGood;
 }
 
 function addToCart($connect, $productId) {
