@@ -8,6 +8,14 @@
         align-items: center;
         justify-items: center;
     }
+    &__top-admin {
+        display: grid;
+        grid-template-columns: 20% 10% 15% 30% 15% 10%;
+        background: $color-2-transp;
+        height: 80px;
+        align-items: center;
+        justify-items: center;
+    }
     &__bottom {
         display: flex;
         justify-content: space-between;
@@ -55,10 +63,29 @@
             }
         }
     }
+    &__item-admin {
+        display: grid;
+        grid-template-columns: 20% 10% 15% 30% 15% 10%;
+        align-items: center;
+        justify-items: center;
+        padding: 1rem 0;
+        border: 1px solid $color-2-transp;
+        svg {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            path {fill: $mainColor;}
+            &:hover {
+                path {fill: $oppositeColor;}
+            }
+        }
+    }
     &__body {
         display: flex;
         align-items: center;
         gap: 1rem;
+        width: 100%;
+        padding-left: 30px;
     }
     &__img {
         width: 80px;

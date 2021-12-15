@@ -1,3 +1,6 @@
+<?php
+    include_once("../models/db_cart.php");
+?>
 <sidebar class="sidebar">
     <div class="sidebar__categories">
         <div class="sidebar__heading">
@@ -85,39 +88,39 @@
             <h4 class="heading-h4">Корзина</h4>
             <div class="hr"></div>
         </div>
+        <?php
+            $cart = getCart($connect);
+            $totalPrice = 0;
+            if ($cart) {
+                foreach ($cart as $cartItem) {
+                    $cartGood = getCartGood($connect, $cartItem['product_id']);
+                    $totalPrice = $totalPrice + $cartGood['price']*$cartItem['quantity'];
+                ?>
         <div class="sidebar__cart-item">
             <div class="sidebar__cart-remove">
-                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+                <a href="../models/db_cart.php?action=delete&remove_from_cart&id=<?=$cartItem['product_id']?>">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+                </a>
             </div>
             <div class="sidebar__cart-img">
-                <a href="#"><img src="../images/products/2.jpg" alt="product"></a>
+                <a href="product.php?id=<?=$cartItem['product_id']?>"><img src="../public/images/products/<?=$cartGood['img']?>" alt="product"></a>
             </div>
             <div class="sidebar__cart-name">
-                <a href="#">Premium Security Cam VVZ</a>
+                <a href="product.php?id=<?=$cartItem['product_id']?>"><?=$cartGood['title']?></a>
             </div>
             <div class="sidebar__cart-quant">
-                1 &times; &#8381;456.97
+                <?=$cartItem['quantity']?> &times; &#8381;<?=$cartGood['price']?>
             </div>
         </div>
-        <div class="sidebar__cart-item">
-            <div class="sidebar__cart-remove">
-                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
-            </div>
-            <div class="sidebar__cart-img">
-                <a href="#"><img src="../images/products/3.jpg" alt="product"></a>
-            </div>
-            <div class="sidebar__cart-name">
-                <a href="#">Premium Security Cam VVZ</a>
-            </div>
-            <div class="sidebar__cart-quant">
-                1 &times; &#8381;456.97
-            </div>
-        </div>
+        <?php
+            };
+        };
+        ?>
         <div class="sidebar__cart-subtotal">
-            Subtotal: <span>&#8381;6482.00</span>
+            Subtotal: <span>&#8381;<?=$totalPrice?></span>
         </div>
         <div class="sidebar__cart-bottom">
-            <a href="#" class="btn btn--clipped">Корзина</a>
+            <a href="../public/cart.php" class="btn btn--clipped">Корзина</a>
             <a href="#" class="btn btn--solid">Заказать</a>
         </div>
     </div>

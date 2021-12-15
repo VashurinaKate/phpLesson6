@@ -24,22 +24,49 @@ function getGood($connect, $id) {
     return $good;
 }
 
-function addGood($connect, $title, $price, $info, $rating, $img, $shortinfo, $reviewCount) {
-    return;
+function addGood($connect) {
+    $title = strip_tags($_POST['title']);
+    $price = (int)$_POST['price'];
+    $info = strip_tags($_POST['info']);
+    $shortinfo = strip_tags($_POST['shortinfo']);
+    $img = $_FILES['img']['name'];
+    $rating = 0;
+    $reviewCount = 0;
+
+    $path = "../public/images/products/{$_FILES['img']['name']}";
+    if (move_uploaded_file($_FILES['img']['tmp_name'], $path)) {
+        copy($_FILES['img'], $path);
+    }
+    $sql = "insert into goods (title, price, info, img, shortinfo, rating, review_count) values ('$title', '$price', '$info', '$img', '$shortinfo', '$rating', '$reviewCount')";
+    if ($res = mysqli_query($connect, $sql)) {
+        header("Location: /admin/index.php");
+    } else {
+        die(mysqli_error($connect));
+    }
 };
 
-function deleteGood($connect, $id) {
-    $id = (int)$id;
-    if($id == 0)
-        return false;
-
-    $sql = sprintf("delete from goods where id='%d'", $id);
-    $res = mysqli_query($connect, $sql);
-
-    if(!$res)
-        die(mysqli_error($connect));
-
-    return mysqli_affected_rows($connect);
+if (isset($_POST['submit_new_product'])) {
+    addGood($connect);
 }
 
+function deleteGood($connect, $id) {
+    $id = (int)$_GET['id'];
+    $action = $_GET['action'];
+    if ($action == 'delete') {
+        $sql = "delete from goods where id=$id";
+        if ($res = mysqli_query($connect, $sql)) {
+            header("Location: /admin/index.php");
+        } else {
+            die(mysqli_error($connect));
+        }
+    }
+}
+
+if (isset($_GET['delete_product'])) {
+    deleteGood($connect, $id);
+}
+
+function getBestsellers($connect) {
+    $connect = "select from goods ";
+}
 ?>

@@ -94,7 +94,7 @@ li {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  line-height: 2rem;
+  line-height: 1.5rem;
   padding: 0 20px;
   transition: all 0.2s;
   border: 1px solid #84DCC6;
@@ -796,7 +796,7 @@ li {
   font-size: 0.7rem;
   color: #4B4E6D;
 }
-.proddetail__form input {
+.proddetail__form input[name=quantity] {
   border: 1px solid #c4ced859;
   padding-left: 4px;
   text-align: center;
@@ -948,7 +948,6 @@ li {
   justify-content: space-between;
 }
 .proddetail__review-form .btn {
-  height: 30px;
   box-shadow: 3px 3px 0 rgba(132, 220, 198, 0.3);
   font-size: 0.6rem;
   outline: none;
@@ -961,6 +960,14 @@ li {
 .cart__top {
   display: grid;
   grid-template-columns: 40% 15% 15% 15% 15%;
+  background: #c4ced859;
+  height: 80px;
+  align-items: center;
+  justify-items: center;
+}
+.cart__top-admin {
+  display: grid;
+  grid-template-columns: 20% 10% 15% 30% 15% 10%;
   background: #c4ced859;
   height: 80px;
   align-items: center;
@@ -1022,10 +1029,31 @@ li {
 .cart__item svg:hover path {
   fill: #84DCC6;
 }
+.cart__item-admin {
+  display: grid;
+  grid-template-columns: 20% 10% 15% 30% 15% 10%;
+  align-items: center;
+  justify-items: center;
+  padding: 1rem 0;
+  border: 1px solid #c4ced859;
+}
+.cart__item-admin svg {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.cart__item-admin svg path {
+  fill: #222222;
+}
+.cart__item-admin svg:hover path {
+  fill: #84DCC6;
+}
 .cart__body {
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+  padding-left: 30px;
 }
 .cart__img {
   width: 80px;

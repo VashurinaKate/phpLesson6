@@ -1,7 +1,7 @@
 <header class="header center">
     <div class="header__top">
         <div class="header__left">
-            <a href="#"><img src="../images/logo.png" alt="logo"></a>
+            <a href="#"><img src="../public/images/logo.png" alt="logo"></a>
         </div>
         <nav class="header__right">
             <ul>

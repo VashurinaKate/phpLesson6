@@ -10,7 +10,6 @@ function getCart($connect) {
     
     while($data = mysqli_fetch_assoc($res)) {
         $cart[] = $data;
-        
     }
     return $cart;
 }
@@ -20,7 +19,7 @@ function getCartGood($connect, $productId) {
     $res = mysqli_query($connect, $sql);
     if (!$res)
         die(mysqli_error($connect));
-        
+
     while($data = mysqli_fetch_assoc($res)) {
         $cartGood = $data;
     }

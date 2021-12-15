@@ -28,9 +28,11 @@ include_once("../models/db_cart.php");
             <div class="cart__items">
                 <?php
                 $cart = getCart($connect);
+                $totalPrice = 0;
                 if ($cart) {
                     foreach ($cart as $cartItem) {
                         $cartGood = getCartGood($connect, $cartItem['product_id']);
+                        $totalPrice = $totalPrice + $cartGood['price']*$cartItem['quantity'];
                     ?>
                 <div class="cart__item">
                     <div class="cart__body">
@@ -65,11 +67,11 @@ include_once("../models/db_cart.php");
             <h3 class="totals__heading">Итог</h3>
             <div class="totals__str">
                 <p>Подитог</p>
-                <p>&#8381;2344.00</p>
+                <p>&#8381;<?=$totalPrice?></p>
             </div>
             <div class="totals__str">
                 <p>Общая стоимость</p>
-                <span>&#8381;2577.00</span>
+                <span>&#8381;<?=$totalPrice?></span>
             </div>
             <a href="#" class="btn btn--clipped">Оформить заказ</a>
         </section>
