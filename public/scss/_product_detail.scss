@@ -44,7 +44,7 @@
             font-size: .7rem;
             color: $color-1;
         }
-        input {
+        input[name="quantity"] {
             @include quantity;
         }
         .btn {
@@ -194,7 +194,7 @@
             justify-content: space-between;
         }
         .btn {
-            height: 30px;
+            // height: 30px;
             box-shadow: 3px 3px 0 $oppositeColor-transp;
             font-size: .6rem;
             outline: none;
