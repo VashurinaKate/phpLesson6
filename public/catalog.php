@@ -1,3 +1,6 @@
+<?php
+include_once("../models/db_goods.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +14,7 @@
 </head>
 <body>
     <?php 
-        include('blocks/header.php');
+        include('../blocks/header.php');
     ?>
     
     <div class="main">
@@ -34,38 +37,38 @@
                 </div>
 
                 <?php
-                include "config.php";
-
-                $sql = "select * from goods";
-                $res = mysqli_query($connect, $sql);
-
-                while($data = mysqli_fetch_assoc($res)):?>
+                $goods = getAllGoods($connect);
+                if($goods) {
+                    foreach ($goods as $good):?>
 
                 <div class="products__item">
                     <div class="rating">
-                        <h4>Rating: <?=$data['rating']?></h4>
+                        <h4>Rating: <?=$good['rating']?></h4>
                     </div>
                     <div class="products__sale"></div>
                     <div class="products__img">
-                        <a href="product.php?id=<?=$data['id']?>">
-                            <img src="images/products/<?= $data['img']?>" alt="product">
+                        <a href="product.php?id=<?=$good['id']?>">
+                            <img src="images/products/<?= $good['img']?>" alt="product">
                         </a>
-                        <a href="#" class="btn btn--solid">В корзину</a>
+                        <a href="../models/db_cart.php?submit_good_to_cart&id=<?=$good['id']?>" class="btn btn--solid">В корзину</a>
                     </div>
                     <div class="products__text">
-                        <a href="product.php?id=<?=$data['id']?>" class="products__name"><?= $data['title']?></a>
-                        <p class="products__price">&#8381;<?= $data['price']?></p>
+                        <a href="product.php?id=<?=$good['id']?>" class="products__name"><?= $good['title']?></a>
+                        <p class="products__price">&#8381;<?= $good['price']?></p>
                     </div>
                 </div>
-                <?php endwhile; ?>
+                <?php
+                    endforeach;
+                };
+                ?>
             </div>
             <?php
-                include('blocks/sidebar.php');
+                include('../blocks/sidebar.php');
             ?>
         </section>
     </div>
     <?php
-        include('blocks/footer.php');
+        include('../blocks/footer.php');
     ?>
 </body>
 </html>

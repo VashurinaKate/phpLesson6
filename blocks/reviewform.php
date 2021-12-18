@@ -1,7 +1,7 @@
 <?php 
-    $id = $_GET['id'];
+    $goodId = (int)$_GET['id'];
 ?>
-<form action="server.php?id=<?=$id?>" method="post" enctype="multipart/form-data">
+<form action="../models/db_reviews.php?id=<?=$goodId?>" name="reviewform" method="post" enctype="multipart/form-data">
     <div class="user-rating">
         <input type="radio" name="rating" class="radio" value="1" id="verybad">
         <input type="radio" name="rating" class="radio" value="2" id="bad">
@@ -18,5 +18,5 @@
         </div>
     </div>
     <label for="textarea">Ваш отзыв</label><textarea name="reviewtext" id="textarea" rows="10" placeholder="Ваш отзыв"></textarea>
-    <input type="submit" class="btn btn--solid" value="Отправить">
+    <input type="submit" name="submit_review_form" class="btn btn--solid" value="Отправить">
 </form>
